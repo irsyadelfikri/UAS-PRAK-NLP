@@ -187,7 +187,7 @@ cv-reviewer-ai/
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
-└── .env (tidak diunggah ke GitHub)
+└── .env (lokal, tidak diupload ke GitHub)
 ```
 
 ---
@@ -229,8 +229,8 @@ cv-reviewer-ai/
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/username/cv-reviewer-ai.git
-cd cv-reviewer-ai
+git clone https://github.com/irsyadelfikri/UAS-PRAK-NLP.git
+cd UAS-PRAK-NLP
 ```
 
 ### 2. Buat Virtual Environment
@@ -291,7 +291,7 @@ streamlit run app.py
 2. Upload file CV dalam format PDF
 3. Klik tombol **Analisis CV**
 4. Tunggu proses analisis selesai
-5. Lihat hasil Summary, ATS Analysis, dan Feedback
+5. Lihat hasil Summary, Structure CV, ATS Analysis, dan Feedback
 
 ---
 
@@ -304,18 +304,6 @@ Aplikasi akan menghasilkan:
 * Penilaian ATS
 * Rekomendasi perbaikan CV
 * Feedback profesional
-
----
-
-## Pengembangan Selanjutnya
-
-Beberapa pengembangan yang dapat dilakukan:
-
-* Job Matching dengan deskripsi pekerjaan
-* Export hasil analisis ke PDF
-* Dashboard statistik ATS
-* Multi-language support
-* Integrasi model yang lebih besar
 
 ---
 
