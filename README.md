@@ -167,21 +167,27 @@ Feedback
 ```text
 cv-reviewer-ai/
 │
-├── app.py
-├── workflow.py
-├── cv_analyzer.py
-├── pdf_reader.py
-├── requirements.txt
-├── README.md
-├── .env
+├── data/
+│   └── sample_cv.pdf
 │
 ├── screenshots/
+│   ├── langsmith-dashboard.png
+│   ├── langsmith-trace.png
+│   ├── streamlit-ats.png
+│   ├── streamlit-feedback.png
 │   ├── streamlit-home.png
-│   ├── streamlit-result.png
-│   └── langsmith-trace.png
+│   ├── streamlit-structure.png
+│   └── streamlit-summary.png
 │
-└── data/
-    └── sample_cv.pdf
+├── app.py
+├── cv_analyzer.py
+├── main.py
+├── pdf_reader.py
+├── workflow.py
+├── README.md
+├── requirements.txt
+├── .gitignore
+└── .env (tidak diunggah ke GitHub)
 ```
 
 ---
