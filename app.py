@@ -1,3 +1,4 @@
+import re
 import streamlit as st
 
 from workflow import graph
@@ -10,8 +11,57 @@ st.set_page_config(
     layout="wide"
 )
 
+# =========================
+# SIDEBAR
+# =========================
+
+with st.sidebar:
+    st.title("📄 CV Reviewer AI")
+
+    st.markdown("""
+### Teknologi
+
+- LangChain
+- LangGraph
+- LangSmith
+- Ollama
+- Streamlit
+""")
+
+    st.markdown("---")
+
+    st.markdown("""
+### 🔄 Workflow
+
+📄 Upload CV
+
+⬇️
+
+📑 Extract Text
+
+⬇️
+
+🏗️ Structure Analysis
+
+⬇️
+
+🎯 ATS Analysis
+
+⬇️
+
+📝 Candidate Summary
+
+⬇️
+
+💡 Final Feedback
+""")
+
+# =========================
+# MAIN PAGE
+# =========================
+
 st.title("📄 CV Reviewer AI")
-st.write("Analisis CV menggunakan LangChain, LangGraph, dan Ollama")
+st.caption("Analisis CV menggunakan LangChain, LangGraph, LangSmith, dan Ollama")
 
 uploaded_file = st.file_uploader(
     "Upload CV PDF",
@@ -20,7 +70,9 @@ uploaded_file = st.file_uploader(
 
 if uploaded_file:
 
-    if st.button("Analisis CV"):
+    st.success("CV berhasil diupload")
+
+    if st.button("🚀 Analisis CV"):
 
         with st.spinner("Menganalisis CV..."):
 
@@ -36,14 +88,50 @@ if uploaded_file:
 
         st.success("Analisis selesai!")
 
-        st.header("📝 Summary")
-        st.write(result["summary"])
+        # =========================
+        # ATS SCORE CARD
+        # =========================
 
-        st.header("🏗 Struktur CV")
-        st.write(result["structure_analysis"])
+        ats_text = result["ats_analysis"]
 
-        st.header("📊 ATS Analysis")
-        st.write(result["ats_analysis"])
+        score_match = re.search(
+            r"ATS SCORE:\s*(\d+)",
+            ats_text
+        )
 
-        st.header("💡 Feedback")
-        st.write(result["final_feedback"])
+        if score_match:
+            score = int(score_match.group(1))
+
+            st.metric(
+                label="🎯 ATS Score",
+                value=f"{score}/100"
+            )
+
+            st.progress(score / 100)
+
+        st.divider()
+
+        # =========================
+        # TABS
+        # =========================
+
+        tab1, tab2, tab3, tab4 = st.tabs(
+            [
+                "📝 Summary",
+                "🏗 Struktur CV",
+                "📊 ATS Analysis",
+                "💡 Feedback"
+            ]
+        )
+
+        with tab1:
+            st.write(result["summary"])
+
+        with tab2:
+            st.write(result["structure_analysis"])
+
+        with tab3:
+            st.write(result["ats_analysis"])
+
+        with tab4:
+            st.write(result["final_feedback"])
