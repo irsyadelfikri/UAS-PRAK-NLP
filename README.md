@@ -198,6 +198,10 @@ cv-reviewer-ai/
 
 ![Home](screenshots/streamlit-home.png)
 
+### Result
+
+![Result](screenshots/streamlit-result.png)
+
 ### Candidate Summary
 
 ![Summary](screenshots/streamlit-summary.png)
